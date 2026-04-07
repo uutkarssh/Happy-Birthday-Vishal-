@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Vishal 🎉</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- AUDIO ELEMENTS -->
+<audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"/>
+</audio>
+<audio id="celebrationSound">
+  <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg"/>
+</audio>
+
+<!-- FLOATING MUSIC BTN -->
+<button class="music-btn" id="musicBtn" title="Toggle Music">
+  <span class="music-icon">🎵</span>
+  <span class="music-label">Music</span>
+</button>
+
+<!-- CONFETTI CONTAINER -->
+<div id="confettiContainer"></div>
+
+<!-- ===================== HERO SECTION ===================== -->
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="crown">👑</div>
+    <h1 class="hero-title">
+      <span class="title-line1">Happy Birthday</span>
+      <span class="title-name">Vishal</span>
+      <span class="title-emoji">🎉</span>
+    </h1>
+    <p class="hero-subtitle">Future IITian &nbsp;|&nbsp; Brilliant Mind &nbsp;|&nbsp; Hardworking Legend</p>
+    <div class="hero-divider">
+      <span></span><span class="diamond">◆</span><span></span>
+    </div>
+    <p class="hero-date">8th April &nbsp;•&nbsp; A Legend Was Born</p>
+    <button class="celebrate-btn" id="celebrateBtn">
+      <span>Celebrate Vishal 🚀</span>
+      <div class="btn-glow"></div>
+    </button>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ===================== PHOTO SECTION ===================== -->
+<section class="photo-section reveal" id="photo">
+  <div class="section-header">
+    <h2 class="section-title">The Man. The Myth. The Legend.</h2>
+    <div class="title-underline"></div>
+  </div>
+  <div class="photo-wrapper">
+    <div class="photo-frame" id="photoFrame">
+      <div class="frame-border"></div>
+      <div class="frame-corner c1"></div>
+      <div class="frame-corner c2"></div>
+      <div class="frame-corner c3"></div>
+      <div class="frame-corner c4"></div>
+      <div class="photo-inner">
+        <!-- Replace src with Vishal's actual photo -->
+        <img src="https://i.ibb.co/placeholder/vishal.jpg" alt="Vishal" id="vishalPhoto" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect fill=%22%230a0f2e%22 width=%22400%22 height=%22400%22/><text x=%2250%25%22 y=%2245%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%2300d4ff%22 font-size=%2280%22>V</text><text x=%2250%25%22 y=%2265%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23ffd700%22 font-size=%2224%22 font-family=%22Arial%22>Vishal</text></svg>'"/>
+      </div>
+      <div class="photo-shine"></div>
+    </div>
+    <div class="photo-caption">
+      <span class="caption-text">The Future IITian 😎</span>
+      <div class="caption-stars">★ ★ ★ ★ ★</div>
+    </div>
+  </div>
+  <div class="badge-row">
+    <div class="badge">🧠 Genius</div>
+    <div class="badge">💪 Hustler</div>
+    <div class="badge">🔥 IIT Bound</div>
+    <div class="badge">⚡ Legend</div>
+  </div>
+</section>
+
+<!-- ===================== CAKE SECTION ===================== -->
+<section class="cake-section reveal" id="cake">
+  <div class="section-header">
+    <h2 class="section-title">Make A Wish 🎂</h2>
+    <div class="title-underline"></div>
+  </div>
+  <div class="cake-area">
+    <div class="cake-container" id="cakeContainer">
+      <!-- Candles -->
+      <div class="candles-row" id="candlesRow">
+        <div class="candle" data-id="1"><div class="flame" id="flame1"><div class="flame-inner"></div></div><div class="smoke" id="smoke1"></div></div>
+        <div class="candle" data-id="2"><div class="flame" id="flame2"><div class="flame-inner"></div></div><div class="smoke" id="smoke2"></div></div>
+        <div class="candle" data-id="3"><div class="flame" id="flame3"><div class="flame-inner"></div></div><div class="smoke" id="smoke3"></div></div>
+        <div class="candle" data-id="4"><div class="flame" id="flame4"><div class="flame-inner"></div></div><div class="smoke" id="smoke4"></div></div>
+        <div class="candle" data-id="5"><div class="flame" id="flame5"><div class="flame-inner"></div></div><div class="smoke" id="smoke5"></div></div>
+      </div>
+      <!-- Cake body -->
+      <div class="cake-body">
+        <div class="cake-top">
+          <div class="cake-decoration">🎂 Happy Birthday Vishal 🎂</div>
+        </div>
+        <div class="cake-mid"></div>
+        <div class="cake-bot"></div>
+        <div class="cake-plate"></div>
+      </div>
+    </div>
+    <div class="mic-status" id="micStatus">
+      <div class="mic-ring" id="micRing"></div>
+      <span id="micStatusText">Press the button & blow! 🎤</span>
+    </div>
+    <div class="blow-controls">
+      <button class="blow-btn" id="blowBtn">
+        <span class="blow-icon">🎤</span>
+        <span>Blow the Candles</span>
+      </button>
+      <button class="relight-btn" id="relightBtn" style="display:none">
+        <span>Relight Candles 🕯️</span>
+      </button>
+    </div>
+    <div class="wish-message" id="wishMessage">
+      <div class="wish-text">Make a wish, Vishal! 🎂✨</div>
+      <div class="wish-sub">May all your IIT dreams come true! 🚀</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== JEE SARCASM SECTION ===================== -->
+<section class="sarcasm-section reveal" id="sarcasm">
+  <div class="section-header">
+    <h2 class="section-title">JEE Life 😂</h2>
+    <div class="title-underline"></div>
+    <p class="section-sub">When JEE becomes your whole personality…</p>
+  </div>
+
+  <!-- Scrolling Ticker -->
+  <div class="ticker-wrapper">
+    <div class="ticker-track" id="tickerTrack">
+      <span>😤 Sleep is temporary, rank is permanent</span>
+      <span>💀 JEE ne life set karni thi… life hi reset kar di</span>
+      <span>😭 1 more chapter... then 3 more... then depression</span>
+      <span>😶 जब समझ आया तब syllabus खत्म हो गया</span>
+      <span>🔥 बाकी लोग birthday enjoy करते हैं, Vishal PYQs solve करता है</span>
+      <span>💔 IIT > Love Story</span>
+      <span>😴 8 hours sleep? LOL. 8 hours study? Barely.</span>
+      <span>📚 Mere dost party pe hain, main HC Verma pe hoon</span>
+      <span>😤 Sleep is temporary, rank is permanent</span>
+      <span>💀 JEE ne life set karni thi… life hi reset kar di</span>
+    </div>
+  </div>
+
+  <!-- Floating Sarcasm Cards -->
+  <div class="sarcasm-cards">
+    <div class="s-card">
+      <div class="s-card-icon">💀</div>
+      <p>"JEE ne life set karni thi…<br/>life hi reset kar di"</p>
+    </div>
+    <div class="s-card">
+      <div class="s-card-icon">😤</div>
+      <p>"Sleep is temporary,<br/>rank is permanent"</p>
+    </div>
+    <div class="s-card">
+      <div class="s-card-icon">😭</div>
+      <p>"1 more chapter...<br/>then 3 more...<br/>then depression"</p>
+    </div>
+    <div class="s-card">
+      <div class="s-card-icon">😶</div>
+      <p>"जब समझ आया<br/>तब syllabus खत्म हो गया"</p>
+    </div>
+    <div class="s-card featured">
+      <div class="s-card-icon">🔥</div>
+      <p>"बाकी लोग birthday<br/>enjoy करते हैं,<br/>Vishal PYQs solve करता है"</p>
+    </div>
+    <div class="s-card">
+      <div class="s-card-icon">💔</div>
+      <p>"IIT > Love Story"</p>
+    </div>
+    <div class="s-card">
+      <div class="s-card-icon">😴</div>
+      <p>"8 hours sleep? LOL.<br/>8 hours study? Barely."</p>
+    </div>
+    <div class="s-card">
+      <div class="s-card-icon">📚</div>
+      <p>"Mere dost party pe hain,<br/>main HC Verma pe hoon"</p>
+    </div>
+  </div>
+
+  <!-- Typing Animation Quote -->
+  <div class="typing-container">
+    <span class="typing-prefix">Vishal right now: </span>
+    <span class="typing-text" id="typingText"></span>
+    <span class="typing-cursor">|</span>
+  </div>
+</section>
+
+<!-- ===================== MOTIVATION SECTION ===================== -->
+<section class="motivation-section reveal" id="motivation">
+  <div class="section-header">
+    <h2 class="section-title">For The Legend 👑</h2>
+    <div class="title-underline"></div>
+  </div>
+  <div class="motivation-quote">
+    <div class="quote-mark open">"</div>
+    <p>Smart, intelligent, and dedicated.<br/>Your hard work will pay off.<br/>IIT isn't just a destination — it's your destiny.</p>
+    <div class="quote-mark close">"</div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item left reveal-left">
+      <div class="tl-icon">🧠</div>
+      <div class="tl-card">
+        <h3>The Mind</h3>
+        <p>Brilliant thinker. Solves problems others can't even understand. Born to crack JEE.</p>
+      </div>
+    </div>
+    <div class="timeline-item right reveal-right">
+      <div class="tl-icon">💪</div>
+      <div class="tl-card">
+        <h3>The Hustle</h3>
+        <p>While others sleep, Vishal grinds. No shortcut. No excuse. Pure dedication.</p>
+      </div>
+    </div>
+    <div class="timeline-item left reveal-left">
+      <div class="tl-icon">🚀</div>
+      <div class="tl-card">
+        <h3>The Future</h3>
+        <p>IIT campus. Dream realized. The hard work was always worth it. Always.</p>
+      </div>
+    </div>
+    <div class="timeline-item right reveal-right">
+      <div class="tl-icon">🏆</div>
+      <div class="tl-card">
+        <h3>The Legacy</h3>
+        <p>Not just a rank. A legend. An inspiration. Vishal — the guy who made it happen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-name">Vishal</div>
+    <div class="footer-msg">Made with 💙 & ⭐ for the future IITian</div>
+    <div class="footer-date">8th April — Your Day 🎂</div>
+  </div>
+  <div class="footer-stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
